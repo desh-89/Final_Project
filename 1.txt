@@ -1,0 +1,15 @@
+superuser
+login: user 
+password: 1234
+
+admin
+login: manager
+password: desh_1989
+
+guest 
+login: guest
+password: desh_1989
+
+service
+login: service
+password: desh_1989
