@@ -10,60 +10,58 @@
 <div id="content">
   <div class="centrator">
     <section>
-      <div class="line"><span class="title">Техническое обслуживание</span></div>
+      
       <div class="line">
         <div class="column">
           <div class="search_result">
             {% if is_aut %}
-            <div class="result_info"><span>Добро пожаловать {{request.user.first_name}}!</span></div>
-            <div class="result_info"><span>Информация о проведённом ТО вашей техники</span></div>
-            <div class="search_result">
-              <div class="result_info">
-                <div class="machine">
-                  <span>Модель техники {{machine.technique_model}}</span>
-                  <span>Заводской номер техники {{machine.number_machine}}</span>
+              <div class="result_info"><span>Добро пожаловать, {{request.user.first_name}}!</span></div>
+              <div class="result_info"><span>Информация о ТО проведенных вашей технике</span></div>
+                <div class="search_result">
+                  <div class="result_info">
+                    <div class="machine">
+                      <span>Модель техники {{machine.technique_model}}</span>
+                      <span>Заводской номер техники {{machine.number_machine}}</span>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div class="result_collection">
-                <div class="tabs">
-                  <a href="{% url 'machine_detail' machine.pk %}"><div class="tab"><span>Общая информация</span></div></a>
-                  <a href="{% url 'to_list' machine.pk %}"><div class="tab active"><span>ТО</span></div></a>
-                  <a href="{% url 'complaint_list' machine.pk %}"><div class="tab"><span>Рекламации</span></div></a>
+                <div class="result_collection">
+                  <div class="tabs">
+                    <a href="{% url 'machine_detail' machine.pk %}"><div class="tab"><span>Общая информация</span></div></a>
+                    <a href="{% url 'to_list' machine.pk %}"><div class="tab active"><span>ТО</span></div></a>
+                    <a href="{% url 'complaint_list' machine.pk %}"><div class="tab"><span>Рекламации</span></div></a>
+                    <a href="/user/"><div class="tab"><span>На главную</span></div></a>
+                  </div>
                 </div>
-              </div>
-              <div class="result_collection">
-                <table>
-                  <tbody><tr>
-                    <th class="nam left">Вид ТО</th>
-                    <th class="nam left">Дата проведения ТО</th>
-                    <th class="nam left">Наработка, м/час</th>
-                    <th class="nam left">№ заказ-наряда</th>
-                    <th class="nam left">дата заказ-наряда</th>
-                    <th class="nam left">Сервисная компания</th>
-                    <th class="nam left">Зав. № машины</th>
-                    <th class="nam left">Изменить</th>
-                    <th class="nam left">Удалить</th>
+                <div class="result_collection">
+                  <table>
+                    <tbody><tr>
+                      <th class="nam left">Вид ТО</th>
+                      <th class="nam left">Дата проведения ТО</th>
+                      <th class="nam left">Наработка, м/час</th>
+                      <th class="nam left">№ заказ-наряда</th>
+                      <th class="nam left">дата заказ-наряда</th>
+                      <th class="nam left">Сервисная компания</th>
+                      <th class="nam left">Зав. № машины</th>
+                      <th class="nam left">Изменить</th>
+                      <th class="nam left">Удалить</th>
                     <tr>
-                    <td class="nam left">{{to_d.service_type}}</td>
-                    <td class="nam left">{{to_d.service_date}}</td>
+                      <td class="nam left">{{to_d.service_type}}</td>
+                      <td class="nam left">{{to_d.service_date}}</td>
                     <td class="nam left">{{to_d.operating_time}}</td>
                     <td class="nam left">{{to_d.work_order_number}}</td>
                     <td class="nam left">{{to_d.work_order_date}}</td>
                     <td class="nam left">{{to_d.company_make_service}}</td>
                     <td class="nam left">{{to_d.machine_to}}</td>
                     <td class="nam left">
-                    <div class="tabs">
-                      <a href="{% url 'to_update' to_d.pk %}">
-                        <div class="tab active"><span><div class="smalltext">Изменить</div></span></div>
-                      </a>
-                    </div>
+                      <div class="tabs">
+                        <a href="{% url 'to_update' to_d.pk %}"><div class="tab active"><span><div class="smalltext">Изменить</div></span></div></a>
+                      </div>
                     </td>
                     <td class="nam left">
-                    <div class="tabs">
-                      <a href="{% url 'to_delete' to_d.pk %}">
-                        <div class="tab active"><span><div class="smalltext">Удалить</div></span></div>
-                      </a>
-                    </div>
+                      <div class="tabs">
+                        <a href="{% url 'to_delete' to_d.pk %}"><div class="tab active"><span><div class="smalltext">Удалить</div></span></div></a>
+                      </div>
                     </td>
                     </tr>
                     </tr>
@@ -87,9 +85,8 @@
                 {% endif %}
               </div>
             </div>
-          </div>
         </div>
-      </div>
-  </div>
+    </div>
+</div>
 </div>
 {% endblock content %}

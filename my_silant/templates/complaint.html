@@ -1,11 +1,7 @@
 <!DOCTYPE html>
-
 <title>Мой Силант - Рекламации</title>
-
 {% extends 'base.html' %}
-
 {% load static %}
-
 {% block content %}
 <div id="content">
     <div class="centrator">
@@ -23,8 +19,8 @@
                 </div>
             </div>
             <div class="column">
-                
                 <div class="search_result">
+                    
                     <div class="result_info"><span>Добро пожаловать, {{request.user.first_name}}!</span></div>
                     <div class="result_info"><span>Информация о коплектации и технических характеристиках вашей техники</span></div>
                     <div class="result_collection">
@@ -68,7 +64,7 @@
                                 </tr>
                             </tr>
                                 {% endfor %}
-                            </tbody></table>
+                        </tbody></table>
                     </div>
                 </div>
             </div>

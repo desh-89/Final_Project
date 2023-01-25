@@ -1,9 +1,10 @@
 <!DOCTYPE html>
+<title>Мой Силант - Авторизация</title>
 {% extends 'base.html' %}
-<html lang="en">
-<body>
 {% block content %}
+<br>
 <h2> Войти в систему </h2>
+<br>
 <form method="post" action="{% url 'login' %}">
 {% csrf_token %}
 <table>
@@ -11,14 +12,16 @@
     <td>{{ form.username.label_tag }}</td>
     <td>{{ form.username }}</td>
 </tr>
+<br>
 <tr>
     <td>{{ form.password.label_tag }}</td>
     <td>{{ form.password }}</td>
 </tr>
 </table>
-
+<br>
 <input type="submit" value="Войти">
 </form>
+<br>
 {% endblock content %}
 </body>
 </html>

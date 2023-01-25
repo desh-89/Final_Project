@@ -10,13 +10,13 @@
 <div id="content">
     <div class="centrator">
         <section>
-            <div class="line"><span class="title">Рекламации</span></div>
+            
             <div class="line">
                 <div class="column">
                     <div class="search_result">
                         {% if is_aut %}
                         <div class="result_info"><span>Добро пожаловать, {{request.user.first_name}}!</span></div>
-                        <div class="result_info"><span>Детальная информация по рекламациям вашей техники</span></div>
+                        <div class="result_info"><span>Информация о рекламациях Вашей техники</span></div>
                         <div class="search_result">
                             <div class="result_info">
                                 <div class="machine">
@@ -30,6 +30,7 @@
                                 <a href="{% url 'machine_detail' machine.pk %}"><div class="tab"><span>Общая информация</span></div></a>
                                 <a href="{% url 'to_detail' machine.pk %}"><div class="tab"><span>ТО</span></div></a>
                                 <a href="{% url 'complaint_detail' machine.pk %}"><div class="tab active"><span>Рекламации</span></div></a>
+                                <a href="/user/"><div class="tab"><span>На главную</span></div></a>
                             </div>
                         </div>
                         <div class="result_collection">
@@ -44,8 +45,10 @@
                                     <th class="nam left">Дата восстановления</th>
                                     <th class="nam left">Зав. № машины</th>
                                     <th class="nam left">Сервисная компания</th>
+                                    {% if m.service_company.name == request.user.first_name or is_manager == 'Менеджер' %}
                                     <th class="nam left">Изменить</th>
                                     <th class="nam left">Удалить</th>
+                                    {% endif %}
                                     </tr>
                                     <tr>
                                     <td class="nam left">{{complaint_d.date_rejection}}</td>
@@ -57,6 +60,7 @@
                                     <td class="nam left">{{complaint_d.recovery_date}}</td>
                                     <td class="nam left">{{complaint_d.machine_complaint}}</td>
                                     <td class="nam left">{{complaint_d.service_company_complaint}}</td>
+                                    {% if m.service_company.name == request.user.first_name or is_manager == 'Менеджер' %}
                                     <td class="nam left">
                                         <div class="tabs">
                                             <a href="{% url 'complaint_update' complaint_d.pk %}">
@@ -71,6 +75,7 @@
                                             </a>
                                         </div>
                                     </td>
+                                    {% endif %}
                                     </tr>
                                 </tr>
                                 <tr>
@@ -85,7 +90,9 @@
                                     <td class="nam left">{{service.description}}</td>
                                 </tr>
                                 </tbody></table>
-                            <div class="tabs"><a href="{% url 'complaint_create' %}"><div class="tab"><span>Добавить рекламацию</span></div></a></div>
+                                {% if m.service_company.name == request.user.first_name or is_manager == 'Менеджер' %}
+                                    <div class="tabs"><a href="{% url 'complaint_create' %}"><div class="tab"><span>Добавить рекламацию</span></div></a></div>
+                                    {% endif %}
                         {% endif %}
                         </div>
                     </div>

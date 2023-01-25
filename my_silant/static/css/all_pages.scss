@@ -101,7 +101,7 @@ body{
 .centrator{
     display: flex;
     flex-direction: row;
-    min-width: 80%;
+    min-width: 90%;
     min-height: calc(100vh - 80px);
     .leftside{
     width: max-content;
@@ -231,11 +231,11 @@ footer{
         }
         .result_info{
             span{
-            font-size: 20px;
+            font-size: 30px;
             display: block;
             margin: 0 0 20px;
             &.client{
-                font-size: 24px;
+                font-size: 40px;
             }
             }
         .machine{

@@ -10,32 +10,29 @@
 <div id="content">
     <div class="centrator">
         <section>
-        <div class="line"><span class="title">Рекламации</span></div>
-        <div class="line">
-            <div class="column">
-                <div class="search_result">
-                {% if is_aut %}
-                    <div class="result_info"><span>Добро пожаловать, {{request.user.first_name}}!</span></div>
-                    <div class="result_info"><span>Детальная информация по рекламациям вашей техники</span></div>
+            <div class="line">
+                <div class="column">
                     <div class="search_result">
-                        <div class="result_info">
-                            <div class="machine">
-                                <span>Модель техники {{machine.technique_model}}</span>
-                                <span>Заводской номер техники {{machine.number_machine}}</span>
+                        {% if is_aut %}
+                        <div class="result_info"><span>Добро пожаловать, {{request.user.first_name}}!</span></div>
+                        <div class="result_info"><span>Информация о рекламациях Вашей техники</span></div>
+                        <div class="search_result">
+                            <div class="result_info">
+                                <div class="machine">
+                                    <span>Модель техники {{machine.technique_model}}</span>
+                                    <span>Заводской номер техники {{machine.number_machine}}</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="result_collection">
-                        <div class="tabs">
-                            <a href="{% url 'machine_detail' machine.pk %}"><div class="tab"><span>Общая информация</span></div></a>
-                            <a href="{% url 'to_detail' machine.pk %}"><div class="tab"><span>ТО</span></div></a>
-                            <a href="{% url 'complaint_list' machine.pk %}"><div class="tab active"><span>Рекламации</span></div></a>
-                            {% if is_manager == 'Менеджер' %}
-                            <a href="/servisecomp/"><div class="tab"><span>Списки</span></div></a>
-                            {% endif %}
+                        <div class="result_collection">
+                            <div class="tabs">
+                                <a href="{% url 'machine_detail' machine.pk %}"><div class="tab"><span>Общая информация</span></div></a>
+                                <a href="{% url 'to_detail' machine.pk %}"><div class="tab"><span>ТО</span></div></a>
+                                <a href="{% url 'complaint_list' machine.pk %}"><div class="tab active"><span>Рекламации</span></div></a>
+                                <a href="/user/"><div class="tab"><span>На главную</span></div></a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="result_collection">
+                        <div class="result_collection">
                         <table>
                             <tbody><tr>
                                 <th class="nam left">Дата отказа</th>
@@ -79,10 +76,12 @@
                             </tr>
                                 {% endfor %}
                             </tbody></table>
+                            {% if m.service_company.name == request.user.first_name or is_manager == 'Менеджер' %}
                             <div class="tabs"><a href="{% url 'complaint_create' %}"><div class="tab"><span>Добавить рекламацию</span></div></a></div>
-                {% else %}
-                    <div class="search_result empty_result"><span>Авторизуйтесь</span></div>
-                {% endif %}
+                            {% endif %}
+                        {% else %}
+                            <div class="search_result empty_result"><span>Авторизуйтесь</span></div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
